@@ -8,6 +8,7 @@ function CtaPicture() {
       <img
         src="/images/illustration-sign-up-mobile.svg"
         className="object-fit"
+        alt="website windows overlayed"
       />
     </picture>
   );

@@ -9,15 +9,27 @@ function CtaText({ email }) {
           <p>Join 60,000+ product managers receiving monthly updates on:</p>
           <ul className="mt-5 mb-7 space-y-3 lg:space-y-4 ">
             <li className="flex items-center gap-3">
-              <img src="/images/icon-list.svg" className="self-start" />
+              <img
+                src="/images/icon-list.svg"
+                className="self-start"
+                alt="success icon for a list"
+              />
               <p>Product discovery and building what matters</p>
             </li>
             <li className="flex items-center gap-3">
-              <img src="/images/icon-list.svg" className="self-start" />
+              <img
+                src="/images/icon-list.svg"
+                className="self-start"
+                alt="success icon for a list"
+              />
               <p>Measuring to ensure updates are a success</p>
             </li>
             <li className="flex items-center gap-3">
-              <img src="/images/icon-list.svg" className="self-start" />
+              <img
+                src="/images/icon-list.svg"
+                className="self-start"
+                alt="success icon for a list"
+              />
               <p className="">And much more!</p>
             </li>
           </ul>
