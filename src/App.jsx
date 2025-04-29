@@ -1,58 +1,42 @@
+import { useState } from "react";
+import CtaPicture from "./components/contentCta/CtaPicture";
+import CtaText from "./components/contentCta/CtaText";
+import CtaForm from "./components/form/CtaForm";
 import Footer from "./ui/Footer";
+import Button from "./ui/Button";
 
 function App() {
+  const [email, setEmail] = useState("");
+
+  function handleReset() {
+    setEmail("");
+  }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen ">
-      <section className="bg-(--white) md:m-auto lg:grid lg:grid-cols-[1fr_.p-8r] lg:p-8 rounded-xl max-w-fit overflow-hidden">
-        <picture className="lg:col-start-2">
-          <source
-            srcSet="/images/illustration-sign-up-desktop.svg"
-            media="(min-width: 1024px)"
-          />
-          <img
-            src="/images/illustration-sign-up-mobile.svg"
-            className="object-fit"
-          />
-        </picture>
-        <section className="p-5 max-w-[23rem] text-(--blue-light) lg:col-start-1 lg:row-start-1 lg:max-w-[30rem] place-self-center">
-          <h1 className="font-bold text-(--blue) tracking-wide mb-2 text-[2.4rem] ">
-            Stay updated!
-          </h1>
-          <p>Join 60,000+ product managers receiving monthly updates on:</p>
-          <ul className="mt-5 mb-7 space-y-3 ">
-            <li className="flex items-center gap-3">
-              <img src="/images/icon-list.svg" className="self-start" />
-              <p>Product discovery and building what matters</p>
-            </li>
-            <li className="flex items-center gap-3">
-              <img src="/images/icon-list.svg" className="self-start" />
-              <p>Measuring to ensure updates are a success</p>
-            </li>
-            <li className="flex items-center gap-3">
-              <img src="/images/icon-list.svg" className="self-start" />
-              <p className="">And much more!</p>
-            </li>
-          </ul>
+      <section className="bg-(--white) md:m-auto lg:grid lg:grid-cols-[1fr_.p-8r] lg:p-5 sm:rounded-xl lg:rounded-4xl max-w-fit overflow-hidden lg:gap-8">
+        {!email && (
+          <>
+            <CtaPicture />
+            <section className="p-5 max-w-[22rem] text-(--blue-light) lg:col-start-1 lg:row-start-1 lg:min-w-[25rem] place-self-center lg:space-y-5">
+              <CtaText click={email} />
+              <CtaForm setEmail={setEmail} />
+            </section>
+          </>
+        )}
+        {email && (
+          <section className="p-5 max-w-[23rem] text-(--blue-light) min-h-screen flex flex-col justify-around lg:min-h-fit lg:max-w-[28rem] lg:p-8 lg:space-y-8">
+            <div className="space-y-5">
+              <img
+                src="/images/icon-success.svg"
+                alt="icon for operation succesfull"
+                className="size-12 lg:size-15"
+              />
+              <CtaText email={email} />
+            </div>
 
-          <form className="flex flex-col gap-2 ">
-            <label className="font-bold text-[.7rem]" htmlFor={"email"}>
-              Email address
-            </label>
-            <input
-              placeholder="email@company.com"
-              className="border-1 border-(--grey) text-[.9rem] w-full px-5 py-2 rounded-md focus:outline-1 focus:outline-(--blue)"
-              id="email"
-              autoComplete="off"
-            />
-
-            <button
-              className="text-(--white) bg-(--blue) text-[.9rem] text-center w-full py-2 rounded-md hover:bg-gradient-to-r from-rose-500 to-orange-500 hover:shadow-[0_10px_10px] hover:shadow-red-300/45 cursor-pointer mt-3"
-              type="button"
-            >
-              Subscribe to monthly newsletter
-            </button>
-          </form>
-        </section>
+            <Button onClick={handleReset}>Dismiss message</Button>
+          </section>
+        )}
       </section>
       <Footer />
     </div>
